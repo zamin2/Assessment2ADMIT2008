@@ -1,24 +1,31 @@
+// server file
 
+//importing
 require('dotenv').config()
 
+//importing express
 const express = require('express');
 
 const path = require('path')
 const cors = require('cors')
+
+// importing cookie-session
 const cookSession = require('cookie-session')
 
-
+// importing login services
 const loginService = require('./services/loginService')
+
+// importing file services
 const fileService = require('./services/fileService')
 
 
 
 
 
-
+// express app
 const app = express()
 
-
+// local port set to 5000
 const PORT = process.env.PORT || 5000
 
 
@@ -28,24 +35,25 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-
+// session credentials
 app.use(cookSession({
   name: "session",
   keys: ['SDFLU9iw2308dlsfuwe2adfl', 'LDFA34gsdfgFOPW2323DA7FS2']
 }))
 
 
+// accessing ejs templates
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, './views'))
 
 
 
-
+// accessing the static webpages
 app.use(express.static(path.join(__dirname, "../client"), { extensions: ["html", 'htm'] })
 );
 
 
-
+// if API fetch request to dashboad
 app.get('/dashboard', (req, res) => {
   if (req.session.isValid) {
     res.render('dashboard')
@@ -54,12 +62,14 @@ app.get('/dashboard', (req, res) => {
   }
 })
 
+// if API fetch request to login
 app.get('/login', (req, res) => {
 
   res.render('login', { passwordWarning: "", emailWarning: "", email: "", password: "" })
 
 })
 
+// if API fetch request to user information
 app.get('/api/v1/users', (req, res) =>{
   const users = fileService.getFileContents('../data/users.json');
   res.send(users)
@@ -67,19 +77,22 @@ app.get('/api/v1/users', (req, res) =>{
 
 })
 
+
+// module to create unique ids
 const { v4: uuidv4 } = require('uuid');
 
-
+// if API fetch request to signup
 app.get('/signup', (req, res) => {
 
   res.render('signup', { passwordWarning: "", emailWarning: "", NameWarning:"", email: "", password:"", fullname:"" })
 
 })
 
+// express validator for validating input in server side
 const { body, validationResult } = require('express-validator');
 
 
-
+// if API Post request to signup
 app.post('/signup', [
   body('fullname').isLength({ min: 6 }),
   body('email').isEmail(),
@@ -132,7 +145,7 @@ app.post('/signup', [
 
 
 
-
+// if API post request to login
 app.post('/login', (req, res) => {
   
   const credentials = {
@@ -166,14 +179,14 @@ app.post('/login', (req, res) => {
 
 
 
-
+// if no page found by API
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, "../client/404.html"));
 });
 
 
 
-
+// PORT 5000 open
 app.listen(PORT, () => {
   console.log(`server started on http://localhost:5000`);
 });

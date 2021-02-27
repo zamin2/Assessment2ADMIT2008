@@ -1,7 +1,8 @@
 
 const fileService = require('./fileService')
+// importing fileService
 
-
+// authentication of user
 exports.authenticate = (credential) => {
 
   const { email, password } = { ...credential }
@@ -36,6 +37,8 @@ exports.authenticate = (credential) => {
 
 }
 
+
+// setting the warning texts
 const formatErrors = function (user) {
   let passwordWarning = ""
   let emailWarning = ""

@@ -2,6 +2,7 @@
 window.addEventListener("load", function (e) {
 let store = [];
 
+// fetching from the custom API
 fetch('https://zahid-assessment2a.herokuapp.com/api/v1/users')
   .then(response => response.json())
   .then((data) => {
@@ -10,13 +11,15 @@ fetch('https://zahid-assessment2a.herokuapp.com/api/v1/users')
       displayUsers(users);
   })
   .catch((error) => console.warn(`Error: ${error}`));
-
+  
+  // adding markup to the DOM
   const displayUsers = function(elements){
     elements.forEach(function(user){
         document.querySelector('.userView').appendChild(user)
     })
     }
 
+    // creating markup
   const createMarkup = function () {
     const markup = store.map(function (user) {
       
