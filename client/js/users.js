@@ -47,16 +47,7 @@ fetch('https://zahid-assessment2a.herokuapp.com/api/v1/users')
 
 
   
-    const rentalRequest = fetch("./js/data.json");
-    
-    rentalRequest
-    .then((response) => response.json())
-    .then((data) => {
-      store = [...data];
-      const rentals = createMarkup();
-      displayRentals(rentals);
-    })
-    .catch((error) => console.warn(`Error: ${error}`));
+
 
     
 
