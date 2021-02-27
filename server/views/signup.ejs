@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <ul >
+      <li><a href="index.html">Home</a></li>
+      <li><a href="users.html">Users</a></li>
+      <li><a href="signup">Register</a></li>
+      <li><a href="login">Log In</a></li>
+    </ul>
+</nav>
+
+      <aside class="app-form">
+        <header><h2 class="center">Registration Form</h2></header>
+          <form id="signup" action="/signup" method="POST">
+       
+            <div class="form-control">
+                <label for="fullname">Full Name
+                  <span class="warning"><%- NameWarning %></span>
+                </label>
+                <input type="text" required=true id="fullname" type="text" name="fullname" value="<%- fullname %>"/>
+            </div>
+              <div class="form-control">
+                  <label for="email">Email Address
+                    <span class="warning"><%- emailWarning %></span>
+                  </label>
+                  <input type="email" required=true id="email" type="text" name="email" value="<%- email %>"/>
+              </div>
+
+              <div class="form-control">
+                <label for="password">New Password
+                  <span class="warning"><%- passwordWarning %></span>
+                </label>
+                <input type="password" required=true id="password" type="text" name="password" value="<%- password %>"/>
+            </div>
+
+            <div class="form-control">
+             <button type="submit">Register</button>
+            </div>
+          </form>
+      </aside>
+</body>
+</html>

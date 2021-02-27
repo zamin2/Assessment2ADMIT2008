@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul >
+        <li><a href="index.html">Home</a></li>
+        <li><a href="users.html">Users</a></li>
+        <li><a href="signup">Register</a></li>
+        <li><a href="login">Log In</a></li>
+      </ul>
+  </nav>
+   
+
+    <aside class="app-form">
+      <header class="form-header"><h2>Login Form</h2></header>
+    
+      <form id="login" action="/login" method="POST">
+        
+        <div class="form-control">
+          <label for="email">Account email address 
+            
+            <span class="warning"><%- emailWarning %></span></label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            required=true
+            value="<%-email%>"
+          />
+     
+        </div>
+
+        <div class="form-control">
+          <label for="password">
+            Account password 
+            <span class="warning"><%- passwordWarning %> </span></label>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            required=true
+            value="<%- password %>"
+          />
+        </div>
+
+        <div class="form-control">
+          <button type="submit">Log in</button>
+        </div>
+      </form>
+    </aside>
+    <script src="js/forms.js"></script>
+  </body>
+</html>
