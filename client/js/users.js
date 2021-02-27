@@ -2,7 +2,7 @@
 window.addEventListener("load", function (e) {
 let store = [];
 
-fetch('http://127.0.0.1:5000/api/v1/users')
+fetch('https://zahid-assessment2a.herokuapp.com/api/v1/users')
   .then(response => response.json())
   .then((data) => {
       store = [...data];
